@@ -1,8 +1,11 @@
 ## These are functions that caches the inverse of a matrix.
 
-## This function creates a matrix object with an "inverse" attribute (intitially set to NULL).
+## This function creates a matrix object with an "inverse" "attribute" (intitially set to NULL).
 ## The inverse attribute it used to cache the inverse of the matrix since inverting a matrix
 ## is a time consuming task.
+##
+## This object is really a list of functions to set the matrix, set() , return the matrix, get() and
+## to set and get the inverse of the matrix, setinverse() and getinverse().
 
 makeCacheMatrix <- function(x = matrix()) {
 
@@ -28,9 +31,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## The cacheSolve function inverses a matrix unless the inverse is
-## already cached in the "inverse" attribute - in that case the
-## cached inverse is returned.
+## The cacheSolve function returns the inverse of  a matrix. In case the
+## inverse is already cached in the "inverse" "attribute" then
+## cached inverse is returned otherwise the inverse is calculated.
 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
@@ -49,6 +52,8 @@ cacheSolve <- function(x, ...) {
   # and so we should calculate it.
   data <- x$get()
   i <- solve(data)
+
+  # Set the inverse in the x object.
   x$setinverse(i)
 
   # Return the inverse
